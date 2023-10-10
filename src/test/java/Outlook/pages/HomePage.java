@@ -1,36 +1,44 @@
-package Outlook.pages;
+package outlook.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class HomePage {
-WebDriver driver;
+public class NewMailPage {
+	WebDriver driver;
+	//LOGIN page
+	By NewMail = By.cssSelector("button[aria-label='New message']");
+	By ToEmail = By.cssSelector("input[aria-label='To']");
+	By Subject = By.cssSelector("input[aria-label='Add a subject']");
+	By BodyInput = By.cssSelector("div[role='textbox']");
+	By SendMailButton = By.cssSelector("button[aria-label='Send']");
 	
-	//Home Page
-	By login =By.xpath("//*[@id=\"globalnavbar-header-container\"]/div[2]/div/div[6]/div/div/div[1]/a");
-	By watchNOW = By.xpath("//*[@id=\"main\"]/div[1]/div/div/div/div[5]/div/div[2]/div[1]/div/div[6]/div[1]/div/div/div/div[2]/div[2]/div/div/div/div[1]/div/div/div/div[2]/div/div/div/div/a");
-	By tryFORfree =By.xpath("//*[@id=\"globalnavbar-header-container\"]/div[3]/div/div/div/a");
-	By ContactUS = By.xpath("//*[@id=\"globalnavbar-header-container\"]/div[2]/div/div[3]/a");
+	String EmailId = "adarshmm55@gmail.com";  
+    String EmailSubject = "Subject"; 
+    String Body = "Body of the email";
 	
-	
-	public HomePage (WebDriver d){
-		driver=d;
+	public NewMailPage(WebDriver driver){
+		this.driver= driver;
 	}
 	
-	public void clicklogin() {
-		driver.findElement(login).click();
+	public void clickNewMailButton() {
+		driver.findElement(NewMail).click();
+		
 	}
-	public void clickwatchNOW() {
-		driver.findElement(watchNOW).click();
+	
+	public void enterToEmail() {
+		driver.findElement(ToEmail).sendKeys(EmailId);
 	}
-	public void clicktryFORfree() {
-		driver.findElement(tryFORfree).click();
+	
+	public void enterSubject() {
+		driver.findElement(Subject).sendKeys(EmailSubject);
 	}
-	public void clickContactUS() {
-		driver.findElement(ContactUS).click();
+	
+	public void enterBodyContent() {
+		driver.findElement(BodyInput).sendKeys(Body);
 	}
-
-
-
-
+	
+	public void clickSendEmail() {
+		driver.findElement(SendMailButton).click();
+	}
+	
 }
