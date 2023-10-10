@@ -1,4 +1,4 @@
-package Salesforce.utilties;
+package Outlook.utilties;
 
 import java.io.FileInputStream;
 import java.util.*;

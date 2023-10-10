@@ -3,13 +3,14 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="Salesforce.testscript.TC_Login">
+      <class name="Outlook.testscript.TC_Login">
         <methods>
           <include name="last"/>
-          <include name="tsalesforcesilogin"/>
           <include name="settingup"/>
+          <include name="login"/>
+          <include name="tsalesforcesilogin"/>
         </methods>
-      </class> <!-- Salesforce.testscript.TC_Login -->
+      </class> <!-- Outlook.testscript.TC_Login -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

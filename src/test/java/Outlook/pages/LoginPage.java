@@ -1,4 +1,4 @@
-package Salesforce.pages;
+package Outlook.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

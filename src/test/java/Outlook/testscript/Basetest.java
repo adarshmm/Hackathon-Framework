@@ -1,4 +1,4 @@
-package Salesforce.testscript;
+package Outlook.testscript;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.time.Duration;
 import java.util.Properties;
+import java.util.Set;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
@@ -13,12 +14,13 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeSuite;
 
-import Salesforce.pages.HomePage;
-import Salesforce.pages.LoginPage;
-import Salesforce.pages.TryforfreePage;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import Outlook.pages.HomePage;
+import Outlook.pages.LoginPage;
+import Outlook.pages.TryforfreePage;
 
 public class Basetest {
 	public static WebDriver driver;
@@ -49,6 +51,31 @@ public class Basetest {
 		propsignup = new Properties();
 		propsignup.load(fileLoc2);
 		
+	}
+	@BeforeClass
+	public void login() throws InterruptedException {
+		login = new LoginPage(driver);
+		login.clickSignIn();
+		Thread.sleep(3000);
+		Set<String> windowHandles = driver.getWindowHandles();
+
+        // Switch to the new tab
+        for (String windowHandle : windowHandles) {
+            if (!windowHandle.equals(driver.getWindowHandle())) {
+                driver.switchTo().window(windowHandle);
+                break;
+            }
+        }
+        Thread.sleep(2000);
+		login.enterUsername(prop.getProperty("Username"));
+		Thread.sleep(5000);
+		login.clickUsernameNext();
+		Thread.sleep(5000);
+		login.enterPassword(prop.getProperty("Password"));
+		Thread.sleep(5000);
+		login.clickPasswordNext();
+		Thread.sleep(2000);
+		login.clickStaySignedIn();
 	}
 	public static void  CaptureScreenshot(WebDriver driver, String tname) throws IOException {
 		TakesScreenshot ts = (TakesScreenshot)driver;

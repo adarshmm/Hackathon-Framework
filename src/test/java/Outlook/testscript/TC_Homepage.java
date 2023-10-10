@@ -1,4 +1,4 @@
-package Salesforce.testscript;
+package Outlook.testscript;
 
 import java.io.IOException;
 import java.time.Duration;
@@ -16,15 +16,15 @@ import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
 
-import Salesforce.pages.HomePage;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import junit.framework.Assert;
+import Outlook.pages.HomePage;
 
 public class TC_Homepage extends Basetest{
 	@Test
 	public static void salesforcehome() throws InterruptedException, IOException {
 	
-		home=new HomePage(driver);
+		home=new Outlook.pages.HomePage(driver);
 		home.clicklogin();
 		//Thread.sleep(2000);
 		String Ul =driver.getCurrentUrl();
