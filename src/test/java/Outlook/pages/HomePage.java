@@ -114,3 +114,29 @@ public class DeleteMailPage {
     }
 }
 }
+package outlook.pages;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+public class SentEmailPage {
+	WebDriver driver;
+	//Sent page
+	By SentButton = By.id("O365_AppTile_Mail");
+	By SentMail = By.id("//span[contains(text(), 'Sent Items')]");
+	
+	public SentEmailPage(WebDriver driver){
+		this.driver= driver;
+	}
+	
+	public void clickSentButton() {
+		driver.findElement(SentButton).click();
+		
+	}
+	
+	public void clickSentMail() {
+		driver.findElement(SentMail).click();
+		
+	}
+}
